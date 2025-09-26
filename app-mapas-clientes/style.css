@@ -1,0 +1,141 @@
+:root{
+  --panel-bg: rgba(255,255,255,0.96);
+  --accent: #2a9df4;
+  --muted: #666;
+  --shadow: 0 8px 24px rgba(0,0,0,0.15);
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #f4f6f8;
+}
+
+/* Mapa ocupa toda la pantalla */
+#map {
+  position: fixed;
+  inset: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: 0;
+}
+
+/* Controles superior izquierdo */
+#controls {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 1100;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  background: var(--panel-bg);
+  padding: 8px;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+}
+
+#controls button, #controls input {
+  border: 1px solid #e3e6ea;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 14px;
+  background: white;
+}
+
+#controls input {
+  min-width: 160px;
+}
+
+/* Small spacer to push export to right if desired */
+#controls .spacer { width: 8px; }
+
+/* Form panel (center overlay) */
+#formPanel {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(380px, 92vw);
+  background: var(--panel-bg);
+  padding: 14px;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  z-index: 1150;
+}
+
+#formPanel.hidden { display: none; }
+
+#formPanel h3 { margin: 0 0 8px 0; font-size: 18px; }
+#formPanel label { display: block; margin: 6px 0; font-size: 13px; color: var(--muted); }
+#formPanel input { width: 100%; padding: 8px; margin-top: 6px; border-radius: 8px; border: 1px solid #ddd; }
+
+/* Form actions */
+.form-actions { display: flex; gap: 8px; justify-content: flex-end; margin-top: 10px; }
+.form-actions button { padding: 8px 12px; border-radius: 8px; border: none; cursor: pointer; }
+.form-actions button[type="submit"] { background: var(--accent); color: #fff; }
+.form-actions #closeForm { background: #cfcfcf; color: #222; }
+
+/* List panel (right side) */
+#listPanel {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  z-index: 1100;
+  width: min(320px, 92vw);
+  max-height: 72vh;
+  overflow: auto;
+  background: var(--panel-bg);
+  padding: 12px;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+
+#listPanel.hidden { display: none; }
+
+#clientList { list-style: none; padding: 0; margin: 8px 0 0 0; }
+#clientList li {
+  padding: 8px;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.list-actions { display: flex; gap: 8px; justify-content: space-between; margin-top: 8px; }
+.list-actions button { padding: 8px 10px; border-radius: 8px; border: none; cursor: pointer; background: #e7e7e7; }
+
+/* Temporary message (toast) style */
+#tmpMsg {
+  position: fixed;
+  left: 50%;
+  top: 20px;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.7);
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 8px;
+  z-index: 2000;
+}
+
+/* Buttons added dynamically */
+#cancelRouteBtn, #followBtn {
+  margin-left: 8px;
+  border: none;
+  padding: 6px 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #fff;
+}
+
+#cancelRouteBtn { background: #ff6b6b; }
+#followBtn { background: #00a86b; }
+
+/* Responsive */
+@media (max-width: 600px) {
+  #controls input { min-width: 110px; }
+  #formPanel { width: 94vw; }
+  #listPanel { width: 94vw; right: 3%; top: auto; bottom: 12px; max-height: 40vh; }
+}

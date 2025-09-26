@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Clientes de Piscinas - Mapa</title>
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+  <!-- Leaflet Routing Machine CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css" />
+
+  <!-- App CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Mapa full screen -->
+  <div id="map"></div>
+
+  <!-- Controles superiores -->
+  <div id="controls" aria-hidden="false">
+    <button id="toggleForm" title="Agregar cliente">+ Agregar</button>
+    <input id="search" type="search" placeholder="Buscar cliente" />
+    <button id="toggleList" title="Mostrar lista">Lista</button>
+    <div class="spacer"></div>
+    <button id="exportBtn" title="Exportar JSON/CSV">Exportar</button>
+  </div>
+
+  <!-- Panel formulario (overlay) -->
+  <div id="formPanel" class="hidden" role="dialog" aria-modal="true" aria-labelledby="formTitle">
+    <form id="clientForm">
+      <h3 id="formTitle">Nuevo cliente</h3>
+      <label>
+        Nombre
+        <input id="name" type="text" placeholder="Nombre del cliente" required />
+      </label>
+      <label>
+        Dirección
+        <input id="address" type="text" placeholder="Dirección (calle, ciudad, país)" required />
+      </label>
+      <div class="form-actions">
+        <button type="submit">Guardar</button>
+        <button type="button" id="closeForm">Cancelar</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Panel lista (overlay lateral) -->
+  <div id="listPanel" class="hidden" aria-labelledby="listTitle">
+    <h3 id="listTitle">Clientes</h3>
+    <ul id="clientList" role="list"></ul>
+    <div class="list-actions">
+      <button id="clearAll">Eliminar todo</button>
+      <button id="closeList">Cerrar</button>
+    </div>
+  </div>
+
+  <!-- Leaflet JS (antes de script.js) -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+  <!-- Leaflet Routing Machine JS -->
+  <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.min.js"></script>
+
+  <!-- App JS -->
+  <script src="script.js"></script>
+</body>
+</html>
